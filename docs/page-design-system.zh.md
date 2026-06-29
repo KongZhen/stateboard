@@ -71,6 +71,9 @@
   - 四个紧凑 brief 列：不是 todo、workflow、quickstart、integration tiers
 - Quickstart：
   - 深色等宽 prompt 面板，允许横向滚动
+- Skill install：
+  - 紧跟 quickstart 的页内完整安装模块
+  - 使用浅色命令面板，安装命令和运行命令都带复制按钮
 - Integration tiers：
   - 编辑说明 + 可横向滚动表格
 
@@ -93,6 +96,7 @@
 - 始终展示 `复制 prompt`、`查看 GitHub`、`安装 skill`。
 - 使用开源 outline 图标的 code-native SVG。右侧 rail 使用 Heroicons 风格的 24x24 outline glyph：无填充、`stroke: currentColor`、圆形端点和转角。
 - 链接黑色、居中，并用竖线分隔。Action rail 下方不要再加双线分割。
+- `安装 skill` 必须指向页内 `#skill-install` 模块，不指向右侧小条目，也不直接跳 GitHub。
 - 移动端堆叠成三行。
 
 ### Board Preview
@@ -107,6 +111,7 @@
 - 使用报纸 briefing 栏展示 `Prompt 入口`、`Skill`、`Markdown fallback`、`规划中 adapters`。
 - 每个条目包含一个无外框 stroke icon、短标题、一段紧凑说明和一个链接。
 - 不要把可安装 workflow 命名为 `Codex skill`；公开页面统一叫 `Skill`，避免 Claude 和其他 AI assistant 用户误以为只能在 Codex 使用。
+- 右侧 rail 的 `Skill` 链接也指向 `#skill-install`。
 
 ### Quickstart Prompt
 
@@ -115,6 +120,17 @@
 - 使用深色等宽代码面板。
 - 用 `white-space: pre` 保留格式，并允许横向滚动。
 - 未确认频率和具体时间时，不要声称会创建自动化。
+
+### Skill Install
+
+- 模块必须紧跟 quickstart prompt。
+- 安装方法直接写在页面里；不要要求用户打开 GitHub 才知道怎么安装。
+- 包含可复制安装命令：
+  - `git clone https://github.com/KongZhen/stateboard.git`
+  - `mkdir -p ~/.codex/skills/stateboard-codex`
+  - `cp -R stateboard/skills/stateboard-codex/. ~/.codex/skills/stateboard-codex/`
+- 包含可复制运行命令：`$stateboard-codex`。
+- 说明用户仍需提供四个字段：整理什么、同步到哪里、目标位置、是否自动更新。
 
 ### Integration Tiers
 
@@ -172,5 +188,6 @@
 - 集成声明保持分层和有边界。
 - 代码块和表格不会导致整页横向溢出。
 - 复制按钮复制的内容必须和各语言页面中可见的 prompt 文本一致。
+- 顶部 `安装 skill` CTA 和右侧 rail 的 `Skill` 链接必须落到页内安装模块，并提供可复制命令。
 - 中文、日文、韩文、西班牙语页面的 hero / subhead 不出现明显单字或单词孤行，并且 story、rail、table 文本都不能跨出自己的分栏边界。
 - `git diff --check` 通过。

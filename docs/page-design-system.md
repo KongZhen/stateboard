@@ -72,6 +72,9 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
   - four compact brief columns for not-a-todo, workflow, quickstart, integration tiers
 - Quickstart:
   - dark monospace panel with horizontal scrolling
+- Skill install:
+  - full-width in-page install module directly after quickstart
+  - light command panels with copy buttons for install and run commands
 - Integration tiers:
   - editorial note plus table in a horizontally scrollable wrapper
 
@@ -94,6 +97,7 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 - Always expose `Copy prompt`, `View GitHub`, and `Install skill`.
 - Use code-native SVG icons from an open-source outline set. The right rail uses Heroicons-style 24x24 outline glyphs, no fill, `stroke: currentColor`, and round caps and joins.
 - Links are black, centered, and separated by vertical rules. Do not add a bottom double rule under this rail.
+- `Install skill` must link to the in-page `#skill-install` module, not to the small right-rail item and not directly to GitHub.
 - On mobile, stack into three full-width rows.
 
 ### Board Preview
@@ -108,6 +112,7 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 - Use newspaper briefing items for `Prompt entry`, `Skill`, `Markdown fallback`, and `Planned adapters`.
 - Each item has one unboxed stroke icon, a short serif title, one compact paragraph, and one link.
 - Do not label the installable workflow as `Codex skill`; the public-facing name is `Skill` so Claude and other AI-assistant users do not read it as Codex-only.
+- The right-rail `Skill` link also points to `#skill-install`.
 
 ### Quickstart Prompt
 
@@ -116,6 +121,17 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 - Use a dark monospace code panel.
 - Preserve prompt formatting with `white-space: pre` and allow horizontal scroll.
 - Do not claim automation will be created unless frequency and exact time are confirmed.
+
+### Skill Install
+
+- Place the module immediately below the quickstart prompt.
+- Show install instructions on the page; do not require the user to open GitHub to learn how to install.
+- Include a copyable install command:
+  - `git clone https://github.com/KongZhen/stateboard.git`
+  - `mkdir -p ~/.codex/skills/stateboard-codex`
+  - `cp -R stateboard/skills/stateboard-codex/. ~/.codex/skills/stateboard-codex/`
+- Include a copyable usage command: `$stateboard-codex`.
+- Explain that the user still provides the four fields: what to organize, destination, target location, and automatic refresh.
 
 ### Integration Tiers
 
@@ -173,5 +189,6 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 - Integration claims stay tiered and bounded.
 - Code block and tables do not force whole-page horizontal overflow.
 - Copy buttons copy the same prompt text that is visible in each language page.
+- The top `Install skill` CTA and right-rail `Skill` link land on an in-page install module with copyable commands.
 - Chinese, Japanese, Korean, and Spanish pages do not produce awkward single-character or single-word line breaks in hero/subhead copy, and no story, rail, or table text crosses its column boundary.
 - `git diff --check` passes.

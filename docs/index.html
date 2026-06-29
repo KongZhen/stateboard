@@ -607,9 +607,14 @@
         padding-left: 18px;
       }
 
-      .quickstart {
+      .quickstart,
+      .skill-install {
         padding: 28px 0 24px;
         border-bottom: 3px solid var(--rule);
+      }
+
+      .skill-install {
+        scroll-margin-top: 62px;
       }
 
       .section-strip {
@@ -623,24 +628,50 @@
         text-transform: uppercase;
       }
 
-      .code-panel {
+      .code-panel,
+      .command-panel {
         min-width: 0;
         max-width: 100%;
         overflow: hidden;
+      }
+
+      .code-panel {
         border: 1px solid #242824;
         background: #070a09;
       }
 
-      .code-head {
+      .command-panel {
+        min-width: 0;
+        margin-top: 10px;
+        border: 1px solid var(--line);
+        background: #f1efe8;
+      }
+
+      .code-head,
+      .command-head {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 18px;
         padding: 10px 14px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-        color: #e8efe9;
         font-family: var(--sans);
         font-size: 12px;
+      }
+
+      .code-head {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        color: #e8efe9;
+      }
+
+      .command-head {
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+      }
+
+      .code-head span,
+      .command-head span {
+        min-width: 0;
+        overflow-wrap: anywhere;
       }
 
       .copy-button {
@@ -654,6 +685,7 @@
         background: transparent;
         color: #f3f6f1;
         cursor: pointer;
+        flex: 0 0 auto;
         font: inherit;
         font-weight: 700;
       }
@@ -667,6 +699,73 @@
       .copy-button[data-copied="true"] {
         color: #bbd8c2;
         border-color: rgba(187, 216, 194, 0.72);
+      }
+
+      .command-copy {
+        color: var(--ink);
+        border-color: var(--line);
+      }
+
+      .command-copy:hover,
+      .command-copy:focus-visible {
+        border-color: var(--rule);
+      }
+
+      .command-copy[data-copied="true"] {
+        color: var(--green);
+        border-color: var(--green);
+      }
+
+      .install-layout {
+        display: grid;
+        grid-template-columns: minmax(240px, 0.34fr) minmax(0, 0.66fr);
+        gap: 34px;
+      }
+
+      .install-note h2 {
+        margin-bottom: 12px;
+        font-size: 42px;
+        font-weight: 400;
+        line-height: 0.98;
+      }
+
+      .install-note p {
+        color: #2f2b25;
+        font-size: 17px;
+        line-height: 1.42;
+      }
+
+      .install-note,
+      .install-steps {
+        min-width: 0;
+      }
+
+      .install-steps {
+        border-top: 2px solid var(--rule);
+      }
+
+      .install-step {
+        min-width: 0;
+        padding: 16px 0 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .install-step:last-child {
+        border-bottom: 0;
+      }
+
+      .install-step h3 {
+        margin-bottom: 6px;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.05;
+      }
+
+      .install-step p {
+        margin-bottom: 0;
+        color: #2f2b25;
+        font-size: 15px;
+        line-height: 1.42;
       }
 
       pre {
@@ -872,7 +971,8 @@
           padding-left: 0;
         }
 
-        .tier-layout {
+        .tier-layout,
+        .install-layout {
           grid-template-columns: 1fr;
         }
       }
@@ -933,6 +1033,10 @@
 
         .story-copy {
           font-size: 17px;
+        }
+
+        .install-note h2 {
+          font-size: 34px;
         }
 
         .right-rail,
@@ -1031,7 +1135,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1 -.3 -3.4 1.3a11.8 11.8 0 0 0 -6.2 0c-2.4 -1.6 -3.4 -1.3 -3.4 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg>
           View GitHub
         </a>
-        <a class="action-link" href="#install-skill">
+        <a class="action-link" href="#skill-install">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
           Install skill
         </a>
@@ -1241,14 +1345,14 @@
               <a class="rail-link" href="#quickstart">Copy prompt →</a>
             </div>
           </article>
-          <article id="install-skill" class="rail-item">
+          <article class="rail-item">
             <span class="rail-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"/></svg>
             </span>
             <div>
               <h3>Skill</h3>
               <p>Install the local workflow for repeated intake, safer writes, and a short report after each run.</p>
-              <a class="rail-link" href="https://github.com/KongZhen/stateboard/tree/main/skills/stateboard-codex">Install skill →</a>
+              <a class="rail-link" href="#skill-install">Install skill →</a>
             </div>
           </article>
           <article class="rail-item">
@@ -1362,6 +1466,50 @@ Rules:
 - Do not write tokens, webhook secrets, license keys, private credentials, or private destination identifiers.
 - Respond and write destination content in the language of my request unless I explicitly ask for bilingual output.
 - When done, tell me what was created, what was updated, how it was verified, and what still needs my confirmation.</code></pre>
+        </div>
+      </section>
+
+      <section id="skill-install" class="skill-install" aria-label="Install Skill">
+        <div class="section-strip">
+          <span>Install: local Skill</span>
+          <span>No GitHub detour required.</span>
+        </div>
+        <div class="install-layout">
+          <div class="install-note">
+            <p class="kicker">Install Skill</p>
+            <h2>Install it from this page.</h2>
+            <p>Use the Skill when you want repeatable intake, safer local workflow rules, and a short report after each run. Clone the repo once, then copy the Skill folder into Codex.</p>
+          </div>
+          <div class="install-steps">
+            <article class="install-step">
+              <h3>1. Install the Skill</h3>
+              <p>Run this from the folder where you want to keep the Stateboard repository.</p>
+              <div class="command-panel" id="skill-install-command">
+                <div class="command-head">
+                  <span>install command</span>
+                  <button class="copy-button command-copy" type="button" data-copy-target="#skill-install-command code" data-copied-label="Copied" data-fail-label="Copy failed">Copy</button>
+                </div>
+                <pre><code>git clone https://github.com/KongZhen/stateboard.git
+mkdir -p ~/.codex/skills/stateboard-codex
+cp -R stateboard/skills/stateboard-codex/. ~/.codex/skills/stateboard-codex/</code></pre>
+              </div>
+            </article>
+            <article class="install-step">
+              <h3>2. Use it in Codex</h3>
+              <p>Start a new Codex session or continue a project thread, then invoke the Skill by name.</p>
+              <div class="command-panel" id="skill-use-command">
+                <div class="command-head">
+                  <span>run command</span>
+                  <button class="copy-button command-copy" type="button" data-copy-target="#skill-use-command code" data-copied-label="Copied" data-fail-label="Copy failed">Copy</button>
+                </div>
+                <pre><code>$stateboard-codex</code></pre>
+              </div>
+            </article>
+            <article class="install-step">
+              <h3>3. Provide the four fields</h3>
+              <p>Tell it what to organize, where to sync, the target location, and whether automatic refresh is needed. If frequency or exact time is missing, Stateboard must ask before creating automation.</p>
+            </article>
+          </div>
         </div>
       </section>
 
