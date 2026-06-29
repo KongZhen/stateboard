@@ -35,6 +35,7 @@ This is an original Stateboard page. Do not copy external logos, masthead letter
   - mobile: `66px`
   - narrow mobile: `58px`
 - Do not use viewport-scaled font sizes or negative letter spacing.
+- CJK UI labels use lighter sans weights than English labels when needed. Avoid faux-heavy rendering that makes Chinese, Japanese, or Korean text look blurred.
 
 ### Color
 
@@ -91,8 +92,8 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 ### Action Rail
 
 - Always expose `Copy prompt`, `View GitHub`, and `Install skill`.
-- Use code-native SVG icons from the Tabler Icons visual model: 24x24 viewBox, no fill, `stroke: currentColor`, `stroke-width: 2`, round caps and joins.
-- Links are black, centered, and separated by vertical rules.
+- Use code-native SVG icons from an open-source outline set. The right rail uses Heroicons-style 24x24 outline glyphs, no fill, `stroke: currentColor`, and round caps and joins.
+- Links are black, centered, and separated by vertical rules. Do not add a bottom double rule under this rail.
 - On mobile, stack into three full-width rows.
 
 ### Board Preview
@@ -104,8 +105,9 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 
 ### Right Rail
 
-- Use newspaper briefing items for `Prompt entry`, `Codex skill`, `Markdown fallback`, and `Planned adapters`.
-- Each item has one square icon box, a short serif title, one compact paragraph, and one link.
+- Use newspaper briefing items for `Prompt entry`, `Skill`, `Markdown fallback`, and `Planned adapters`.
+- Each item has one unboxed stroke icon, a short serif title, one compact paragraph, and one link.
+- Do not label the installable workflow as `Codex skill`; the public-facing name is `Skill` so Claude and other AI-assistant users do not read it as Codex-only.
 
 ### Quickstart Prompt
 
@@ -125,7 +127,7 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 - Verify `390px`, `768px`, and `1440px`.
 - The masthead must stay readable and not collide with page edges.
 - The masthead subhead uses a wider balanced text measure so Chinese, Japanese, Korean, and Spanish do not collapse into single-character or one-word lines.
-- Chinese, Japanese, and Korean short UI headings use `word-break: keep-all`, `line-break: strict`, and `text-wrap: balance`; masthead subheads and long story headlines must keep natural CJK wrapping so they do not clip on narrow screens.
+- Chinese, Japanese, and Korean long story headlines and prose must wrap inside their own column with `overflow-wrap: anywhere`, `word-break: normal`, and `line-break: strict`. Do not use `keep-all` on long CJK copy; it causes cross-column overlap on desktop and clipped text on narrow screens.
 - Spanish prose uses `hyphens: auto` for long words.
 - Section nav can scroll horizontally on small screens.
 - Tables and prompt blocks can scroll horizontally inside their own containers.
@@ -155,8 +157,9 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 - Language switcher is visually grouped separately from docs / roadmap / GitHub.
 - The page avoids generic SaaS cards, gradients, blobs, and over-rounded UI.
 - Icons share the same 24px/2px stroke visual system.
+- Right-rail icons are unboxed; the action rail has no bottom double rule.
 - The board preview communicates evidence, priority, next action, and sync boundary.
 - Integration claims stay tiered and bounded.
 - Code block and tables do not force whole-page horizontal overflow.
-- Chinese, Japanese, Korean, and Spanish pages do not produce awkward single-character or single-word line breaks in hero/subhead copy.
+- Chinese, Japanese, Korean, and Spanish pages do not produce awkward single-character or single-word line breaks in hero/subhead copy, and no story, rail, or table text crosses its column boundary.
 - `git diff --check` passes.

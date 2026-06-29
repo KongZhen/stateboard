@@ -34,6 +34,7 @@
   - mobile: `66px`
   - 窄屏 mobile: `58px`
 - 不使用 viewport 连续缩放字号，也不使用负字距。
+- CJK UI 标签必要时使用比英文更轻的 sans 字重，避免中文、日文、韩文因为 faux-heavy 渲染出现糊边。
 
 ### 色彩
 
@@ -90,8 +91,8 @@
 ### Action Rail
 
 - 始终展示 `复制 prompt`、`查看 GitHub`、`安装 skill`。
-- 使用 Tabler Icons 视觉模型的 code-native SVG：24x24 viewBox、无填充、`stroke: currentColor`、`stroke-width: 2`、圆形端点和转角。
-- 链接黑色、居中，并用竖线分隔。
+- 使用开源 outline 图标的 code-native SVG。右侧 rail 使用 Heroicons 风格的 24x24 outline glyph：无填充、`stroke: currentColor`、圆形端点和转角。
+- 链接黑色、居中，并用竖线分隔。Action rail 下方不要再加双线分割。
 - 移动端堆叠成三行。
 
 ### Board Preview
@@ -103,8 +104,9 @@
 
 ### Right Rail
 
-- 使用报纸 briefing 栏展示 `Prompt 入口`、`Codex skill`、`Markdown fallback`、`规划中 adapters`。
-- 每个条目包含一个方形 icon、短标题、一段紧凑说明和一个链接。
+- 使用报纸 briefing 栏展示 `Prompt 入口`、`Skill`、`Markdown fallback`、`规划中 adapters`。
+- 每个条目包含一个无外框 stroke icon、短标题、一段紧凑说明和一个链接。
+- 不要把可安装 workflow 命名为 `Codex skill`；公开页面统一叫 `Skill`，避免 Claude 和其他 AI assistant 用户误以为只能在 Codex 使用。
 
 ### Quickstart Prompt
 
@@ -124,7 +126,7 @@
 - 验证 `390px`、`768px` 和 `1440px`。
 - Masthead 必须可读，不能撞边。
 - Masthead 副标题使用更宽的 balanced text measure，避免中文、日文、韩文和西班牙语被拆成单字或单词孤行。
-- 中文、日文、韩文短 UI 标题使用 `word-break: keep-all`、`line-break: strict` 和 `text-wrap: balance`；masthead 副标题和长 story headline 必须保留 CJK 自然换行，避免窄屏裁切。
+- 中文、日文、韩文长 story headline 和正文必须在自身分栏内换行，使用 `overflow-wrap: anywhere`、`word-break: normal` 和 `line-break: strict`。不要在长 CJK 文案上使用 `keep-all`，否则桌面端会跨栏重叠，窄屏会裁切。
 - 西班牙语正文使用 `hyphens: auto` 处理较长单词。
 - 小屏 section nav 可横向滚动。
 - 表格和 prompt block 可以在自身容器内横向滚动。
@@ -154,8 +156,9 @@
 - 语言切换与文档 / 路线图 / GitHub 在视觉上分组明确。
 - 页面避免 generic SaaS card、渐变、blob 和过度圆角 UI。
 - 图标共享同一套 24px / 2px stroke 视觉系统。
+- 右侧 rail 图标无外框；action rail 下方无双线分割。
 - 状态板预览明确表达证据、优先级、下一步和同步边界。
 - 集成声明保持分层和有边界。
 - 代码块和表格不会导致整页横向溢出。
-- 中文、日文、韩文、西班牙语页面的 hero / subhead 不出现明显单字或单词孤行。
+- 中文、日文、韩文、西班牙语页面的 hero / subhead 不出现明显单字或单词孤行，并且 story、rail、table 文本都不能跨出自己的分栏边界。
 - `git diff --check` 通过。

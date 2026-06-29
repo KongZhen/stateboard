@@ -59,6 +59,14 @@
         font-family: var(--serif);
         font-size: 16px;
         line-height: 1.48;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      :lang(zh-Hans),
+      :lang(ja),
+      :lang(ko) {
+        font-synthesis-weight: none;
       }
 
       a {
@@ -176,7 +184,6 @@
       .action-rail {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        border-bottom: 6px double var(--rule);
         font-family: var(--sans);
       }
 
@@ -188,7 +195,7 @@
         gap: 10px;
         border-right: 1px solid var(--line);
         font-size: 15px;
-        font-weight: 760;
+        font-weight: 700;
       }
 
       .action-link:last-child {
@@ -225,7 +232,7 @@
         border-bottom: 3px solid var(--rule);
         font-family: var(--sans);
         font-size: 12px;
-        font-weight: 760;
+        font-weight: 700;
         overflow-x: auto;
         text-transform: uppercase;
         white-space: 現在rap;
@@ -261,6 +268,7 @@
       .board-column,
       .right-rail {
         min-width: 0;
+        overflow-wrap: anywhere;
       }
 
       .lead-story {
@@ -294,6 +302,7 @@
         font-weight: 400;
         letter-spacing: 0;
         line-height: 0.95;
+        overflow-wrap: break-word;
         text-wrap: balance;
       }
 
@@ -447,19 +456,26 @@
 
       .rail-item {
         display: grid;
-        grid-template-columns: 46px minmax(0, 1fr);
-        gap: 14px;
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 12px;
         padding: 18px 0;
         border-bottom: 1px solid var(--line);
       }
 
       .rail-icon {
         display: inline-flex;
-        width: 42px;
-        height: 42px;
+        width: 28px;
+        height: 28px;
         align-items: center;
         justify-content: center;
-        border: 2px solid var(--rule);
+        margin-top: 3px;
+        border: 0;
+      }
+
+      .rail-icon svg {
+        width: 26px;
+        height: 26px;
+        stroke-width: 1.7;
       }
 
       .rail-item h3 {
@@ -525,18 +541,49 @@
         text-wrap: balance;
       }
 
+      :lang(zh-Hans) .story-title,
+      :lang(ja) .story-title,
+      :lang(ko) .story-title {
+        font-size: 46px;
+        line-height: 1.08;
+        overflow-wrap: anywhere;
+        word-break: normal;
+        line-break: strict;
+      }
+
       :lang(zh-Hans) .story-copy,
       :lang(zh-Hans) .brief-card h2,
+      :lang(zh-Hans) .brief-card p,
       :lang(zh-Hans) .rail-item h3,
+      :lang(zh-Hans) .rail-item p,
+      :lang(zh-Hans) li,
       :lang(ja) .story-copy,
       :lang(ja) .brief-card h2,
+      :lang(ja) .brief-card p,
       :lang(ja) .rail-item h3,
+      :lang(ja) .rail-item p,
+      :lang(ja) li,
       :lang(ko) .story-copy,
       :lang(ko) .brief-card h2,
-      :lang(ko) .rail-item h3 {
-        word-break: keep-all;
-        overflow-wrap: normal;
+      :lang(ko) .brief-card p,
+      :lang(ko) .rail-item h3,
+      :lang(ko) .rail-item p,
+      :lang(ko) li {
+        overflow-wrap: anywhere;
+        word-break: normal;
         line-break: strict;
+      }
+
+      :lang(zh-Hans) .action-link,
+      :lang(zh-Hans) .section-nav,
+      :lang(zh-Hans) .rail-link,
+      :lang(ja) .action-link,
+      :lang(ja) .section-nav,
+      :lang(ja) .rail-link,
+      :lang(ko) .action-link,
+      :lang(ko) .section-nav,
+      :lang(ko) .rail-link {
+        font-weight: 650;
       }
 
       :lang(es) .story-copy,
@@ -848,6 +895,14 @@
           font-size: 42px;
         }
 
+        :lang(zh-Hans) .story-title,
+        :lang(ja) .story-title,
+        :lang(ko) .story-title {
+          font-size: 31px;
+          line-height: 1.12;
+          text-wrap: pretty;
+        }
+
         .story-copy {
           font-size: 17px;
         }
@@ -895,12 +950,12 @@
         .story-title {
           font-size: 38px;
         }
-
         :lang(zh-Hans) .story-title,
         :lang(ja) .story-title,
         :lang(ko) .story-title {
-          font-size: 35px;
-          line-height: 1.08;
+          font-size: 29px;
+          line-height: 1.12;
+          text-wrap: pretty;
         }
       }
 
@@ -1127,7 +1182,7 @@
                       <td>現在</td>
                     </tr>
                     <tr>
-                      <td>Codex スキル</td>
+                      <td>スキル</td>
                       <td>再利用できるローカル workflow</td>
                       <td>現在</td>
                     </tr>
@@ -1148,7 +1203,7 @@
           <h2 class="rail-heading">始める</h2>
           <article class="rail-item">
             <span class="rail-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M5 7l5 5l-5 5"/><path d="M13 17l6 0"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
             </span>
             <div>
               <h3>プロンプト入口</h3>
@@ -1158,17 +1213,17 @@
           </article>
           <article id="install-skill" class="rail-item">
             <span class="rail-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 7h4v-4h8v4h4v6h-4v8h-8v-8h-4z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"/></svg>
             </span>
             <div>
-              <h3>Codex スキル</h3>
+              <h3>スキル</h3>
               <p>ローカル workflow をインストールして、繰り返し intake、安全な書き込み、短い実行レポートを使えます。</p>
               <a class="rail-link" href="https://github.com/KongZhen/stateboard/tree/main/skills/stateboard-codex">スキルをインストール →</a>
             </div>
           </article>
           <article class="rail-item">
             <span class="rail-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><path d="M9 13h6"/><path d="M9 17h3"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
             </span>
             <div>
               <h3>Markdown fallback</h3>
@@ -1178,10 +1233,10 @@
           </article>
           <article class="rail-item">
             <span class="rail-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M7 7h10v10h-10z"/><path d="M4 10h3"/><path d="M17 10h3"/><path d="M10 4v3"/><path d="M10 17v3"/><path d="M14 4v3"/><path d="M14 17v3"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
             </span>
             <div>
-              <h3>計画中のアダプターs</h3>
+              <h3>計画中のアダプター</h3>
               <p>アダプターは段階的に進みます。下の連携階層で、現時点で期待できることを確認できます。</p>
               <a class="rail-link" href="#tiers">階層を見る ↓</a>
             </div>
@@ -1234,7 +1289,7 @@
             連携は幅ではなく、深さと信頼性で説明します。
           </p>
           <ul>
-            <li>現在: プロンプトと Codex スキル。</li>
+            <li>現在: プロンプトと スキル。</li>
             <li>設定済み: 実 connector があるときだけ書き込み。</li>
             <li>Fallback: Markdown または export rows。</li>
           </ul>
@@ -1285,7 +1340,7 @@
               Stateboard は support tier なしに「すべてをサポート」とは言いません。タスク同期、カレンダー同期、通知配信、Markdown fallback は別の約束です。
             </p>
             <ul>
-              <li>現在の入口はプロンプトと Codex スキルです。</li>
+              <li>現在の入口はプロンプトと スキルです。</li>
               <li>実書き込みには connector discovery と検証が必要です。</li>
               <li>自動化は頻度と正確な時刻が確認されるまで待ちます。</li>
             </ul>
@@ -1305,7 +1360,7 @@
                 <tr>
                   <td>現在</td>
                   <td><span class="dot green"></span>ローカル優先</td>
-                  <td>プロンプト, Codex スキル, Markdown</td>
+                  <td>プロンプト, スキル, Markdown</td>
                   <td>読めるコンテキストからプロジェクトボードと実行レポートを作成。</td>
                   <td>Now</td>
                 </tr>
