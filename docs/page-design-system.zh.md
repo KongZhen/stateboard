@@ -150,6 +150,11 @@
   - `prompts/stateboard-sync-prompt.ja.md`
   - `prompts/stateboard-sync-prompt.ko.md`
   - `prompts/stateboard-sync-prompt.es.md`
+  - `docs/prompts/stateboard-sync-prompt.md`
+  - `docs/prompts/stateboard-sync-prompt.zh.md`
+  - `docs/prompts/stateboard-sync-prompt.ja.md`
+  - `docs/prompts/stateboard-sync-prompt.ko.md`
+  - `docs/prompts/stateboard-sync-prompt.es.md`
 - 英文页是 canonical；中文页镜像结构和行为。
 - 日文、韩文、西班牙语页面镜像同一版式，但必须保留各自语言的阅读节奏，不能盲目继承英文换行行为。
 - HTML/CSS 保持单文件自包含。

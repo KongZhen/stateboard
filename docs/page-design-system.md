@@ -151,6 +151,11 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
   - `prompts/stateboard-sync-prompt.ja.md`
   - `prompts/stateboard-sync-prompt.ko.md`
   - `prompts/stateboard-sync-prompt.es.md`
+  - `docs/prompts/stateboard-sync-prompt.md`
+  - `docs/prompts/stateboard-sync-prompt.zh.md`
+  - `docs/prompts/stateboard-sync-prompt.ja.md`
+  - `docs/prompts/stateboard-sync-prompt.ko.md`
+  - `docs/prompts/stateboard-sync-prompt.es.md`
 - English page is canonical; Chinese page mirrors structure and behavior.
 - Japanese, Korean, and Spanish pages mirror the same layout and must keep localized reading rhythm rather than inheriting English line-break behavior blindly.
 - Keep HTML/CSS self-contained in each page.
