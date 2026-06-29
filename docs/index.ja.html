@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Stateboard turns AI work context into a living project board for todo, calendar, documentation, and collaboration tools."
+      content="Stateboard は AI の作業コンテキストを、継続的に更新されるプロジェクト状態ボードに変換します。"
     />
     <title>Stateboard</title>
     <link rel="alternate" hreflang="en" href="https://kongzhen.github.io/stateboard/" />
@@ -228,7 +228,7 @@
         font-weight: 760;
         overflow-x: auto;
         text-transform: uppercase;
-        white-space: nowrap;
+        white-space: 現在rap;
       }
 
       .section-nav .nav-group {
@@ -916,18 +916,18 @@
   <body>
     <header class="edition" aria-label="Stateboard edition header">
       <div class="topline">
-        <span>Alpha edition</span>
-        <span class="topline-center">A project status board for AI work.</span>
+        <span>Alpha 版</span>
+        <span class="topline-center">AI 作業のためのプロジェクト状態ボード。</span>
         <span class="topline-links">
           <span class="utility-links">
-            <a href="product-definition.md">Docs</a>
-            <a href="roadmap.md">Roadmap</a>
+            <a href="product-definition.md">ドキュメント</a>
+            <a href="roadmap.md">ロードマップ</a>
             <a href="https://github.com/KongZhen/stateboard" aria-label="Stateboard on GitHub">GitHub</a>
           </span>
           <span class="language-switcher" aria-label="Language">
-            <a href="index.html" aria-current="page">EN</a>
+            <a href="index.html">EN</a>
             <a href="index.zh.html">中文</a>
-            <a href="index.ja.html">日本語</a>
+            <a href="index.ja.html" aria-current="page">日本語</a>
             <a href="index.ko.html">한국어</a>
             <a href="index.es.html">ES</a>
           </span>
@@ -936,21 +936,21 @@
 
       <div class="masthead">
         <h1>Stateboard</h1>
-        <p class="dek">Turn AI work context into a living project board.</p>
+        <p class="dek">AI 作業コンテキストを、継続的に更新されるプロジェクト状態ボードへ。</p>
       </div>
 
       <nav class="action-rail" aria-label="Primary actions">
         <a class="action-link" href="#quickstart">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"/><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>
-          Copy prompt
+          プロンプトをコピー
         </a>
         <a class="action-link" href="https://github.com/KongZhen/stateboard">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1 -.3 -3.4 1.3a11.8 11.8 0 0 0 -6.2 0c-2.4 -1.6 -3.4 -1.3 -3.4 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg>
-          View GitHub
+          GitHub を見る
         </a>
         <a class="action-link" href="#install-skill">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
-          Install skill
+          スキルをインストール
         </a>
       </nav>
     </header>
@@ -958,16 +958,16 @@
     <div class="section-nav-wrap">
       <nav class="section-nav edition" aria-label="Page sections">
         <span class="nav-group">
-          <a href="#overview">Overview</a>
-          <a href="#workflow">Why Stateboard</a>
-          <a href="#quickstart">Quickstart</a>
-          <a href="#tiers">Integrations</a>
-          <a href="testing.md">Testing</a>
-          <a href="roadmap.md">Roadmap</a>
+          <a href="#overview">概要</a>
+          <a href="#workflow">Stateboard とは</a>
+          <a href="#quickstart">クイックスタート</a>
+          <a href="#tiers">連携</a>
+          <a href="testing.md">テスト</a>
+          <a href="roadmap.md">ロードマップ</a>
         </span>
         <span class="search-mark" aria-hidden="true">
           <svg class="inline-icon" viewBox="0 0 24 24"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg>
-          Source first
+          まずソースを見る
         </span>
       </nav>
     </div>
@@ -975,61 +975,59 @@
     <main class="edition">
       <section id="overview" class="front-grid" aria-label="Stateboard front page">
         <article class="lead-story">
-          <p class="kicker">Product overview</p>
-          <h2 class="story-title">From scattered context to signal. A board that stays current.</h2>
+          <p class="kicker">プロダクト概要</p>
+          <h2 class="story-title">散らばった文脈を、行動できるシグナルへ。更新され続けるプロジェクトボード。</h2>
           <p class="story-copy">
-            Stateboard turns AI conversations, project files, notes, todos, and verification results into a living
-            project-status board. It captures evidence as work happens, keeps next actions visible, and syncs knowledge
-            at the right boundary.
+            Stateboard は AI の会話、プロジェクトファイル、ノート、TODO、検証結果を、継続的に更新されるプロジェクト状態ボードに変換します。作業の途中で証拠を残し、次のアクションを見える状態に保ち、境界が明確なときだけ適切なツールへ同期します。
           </p>
-          <p class="byline">By Stateboard Project · GitHub Pages · alpha</p>
+          <p class="byline">Stateboard プロジェクト · GitHub Pages · alpha</p>
           <ul class="dispatch">
-            <li>Not a todo list. It records what happened, why it matters, and what should move next.</li>
-            <li>Evidence first. Rows link to docs, notes, outputs, and verification results.</li>
-            <li>Sync boundary. Share only when the destination, tier, and timing are clear.</li>
+            <li>TODO リストではありません。何が起きたか、なぜ重要か、次に何を進めるかを記録します。</li>
+            <li>証拠が先です。各行はドキュメント、ノート、出力、検証結果へたどれる必要があります。</li>
+            <li>同期には境界があります。宛先、階層、タイミングが明確なときだけ外部システムへ書き込みます。</li>
           </ul>
-          <p class="pullquote">“The goal is not more tracking. It is less re-explaining.”</p>
+          <p class="pullquote">「目的は tracking を増やすことではなく、説明し直す回数を減らすことです。」</p>
         </article>
 
-        <article class="board-column" aria-label="Stateboard preview">
+        <article class="board-column" aria-label="Stateboard プレビュー">
           <div class="column-head">
-            <span>Stateboard preview</span>
+            <span>Stateboard プレビュー</span>
             <span>example-project</span>
           </div>
           <div class="board-sheet">
             <div class="board-inner">
               <div class="ledger-block">
                 <div class="ledger-title">
-                  <strong>Active projects</strong>
-                  <span class="table-caption">evidence-backed rows</span>
+                  <strong>アクティブなプロジェクト</strong>
+                  <span class="table-caption">証拠つきの行</span>
                 </div>
                 <table>
                   <thead>
                     <tr>
-                      <th>Project</th>
-                      <th>Priority</th>
-                      <th>Status</th>
-                      <th>Updated</th>
+                      <th>プロジェクト</th>
+                      <th>優先度</th>
+                      <th>状態</th>
+                      <th>更新</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Prompt + skill entry</td>
+                      <td>プロンプト + スキル入口</td>
                       <td><span class="priority green">P1</span></td>
-                      <td><span class="dot green"></span>Usable</td>
-                      <td>latest docs</td>
+                      <td><span class="dot green"></span>利用可能</td>
+                      <td>最新ドキュメント</td>
                     </tr>
                     <tr>
-                      <td>Live sync loop</td>
+                      <td>ライブ同期ループ</td>
                       <td><span class="priority amber">P0</span></td>
-                      <td><span class="dot amber"></span>Verify write</td>
-                      <td>test run</td>
+                      <td><span class="dot amber"></span>書き込み検証</td>
+                      <td>テスト実行</td>
                     </tr>
                     <tr>
-                      <td>Adapter extraction</td>
+                      <td>アダプター抽出</td>
                       <td><span class="priority blue">P2</span></td>
-                      <td><span class="dot blue"></span>Planned</td>
-                      <td>matrix</td>
+                      <td><span class="dot blue"></span>計画中</td>
+                      <td>マトリクス</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1037,36 +1035,36 @@
 
               <div class="ledger-block">
                 <div class="ledger-title">
-                  <strong>Evidence (latest)</strong>
-                  <span class="table-caption">source before judgment</span>
+                  <strong>最新の証拠</strong>
+                  <span class="table-caption">ソースが先、判断は後</span>
                 </div>
                 <table>
                   <thead>
                     <tr>
-                      <th>Item</th>
-                      <th>Type</th>
-                      <th>Source</th>
-                      <th>Use</th>
+                      <th>項目</th>
+                      <th>種類</th>
+                      <th>ソース</th>
+                      <th>用途</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Product definition</td>
+                      <td>プロダクト定義</td>
                       <td>doc</td>
                       <td>docs/</td>
-                      <td>positioning</td>
+                      <td>位置づけ</td>
                     </tr>
                     <tr>
-                      <td>Integration matrix</td>
+                      <td>Integration マトリクス</td>
                       <td>doc</td>
                       <td>docs/</td>
-                      <td>tier boundary</td>
+                      <td>階層の境界</td>
                     </tr>
                     <tr>
-                      <td>Dry-run report</td>
+                      <td>Dry-run レポート</td>
                       <td>test</td>
                       <td>examples/</td>
-                      <td>verification</td>
+                      <td>検証</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1074,35 +1072,35 @@
 
               <div class="ledger-block">
                 <div class="ledger-title">
-                  <strong>Next actions</strong>
-                  <span class="table-caption">one project, 3-5 moves</span>
+                  <strong>次のアクション</strong>
+                  <span class="table-caption">1 プロジェクト、3-5 アクション</span>
                 </div>
                 <table>
                   <thead>
                     <tr>
-                      <th>Action</th>
-                      <th>Owner</th>
-                      <th>Boundary</th>
-                      <th>State</th>
+                      <th>アクション</th>
+                      <th>担当</th>
+                      <th>境界</th>
+                      <th>状態</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Run prompt on current project</td>
+                      <td>現在のプロジェクトでプロンプトを実行</td>
                       <td>agent</td>
-                      <td>readable context only</td>
+                      <td>読めるコンテキストのみ</td>
                       <td>open</td>
                     </tr>
                     <tr>
-                      <td>Update existing task first</td>
+                      <td>既存タスクを優先更新</td>
                       <td>sink</td>
-                      <td>no duplicates</td>
+                      <td>重複なし</td>
                       <td>open</td>
                     </tr>
                     <tr>
-                      <td>Ask before automation time</td>
+                      <td>自動化前に時刻を確認</td>
                       <td>user</td>
-                      <td>exact schedule</td>
+                      <td>正確な頻度と時刻</td>
                       <td>blocked</td>
                     </tr>
                   </tbody>
@@ -1111,51 +1109,51 @@
 
               <div class="ledger-block">
                 <div class="ledger-title">
-                  <strong>Sync boundary</strong>
-                  <span class="table-caption">depth over breadth</span>
+                  <strong>同期境界</strong>
+                  <span class="table-caption">広さより深さ</span>
                 </div>
                 <table>
                   <thead>
                     <tr>
-                      <th>Layer</th>
-                      <th>Writes</th>
-                      <th>Use</th>
+                      <th>層</th>
+                      <th>書き込み</th>
+                      <th>用途</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Prompt</td>
-                      <td>Markdown / user-approved sink</td>
-                      <td>now</td>
+                      <td>プロンプト</td>
+                      <td>Markdown / ユーザー承認済みの宛先</td>
+                      <td>現在</td>
                     </tr>
                     <tr>
-                      <td>Codex skill</td>
-                      <td>repeatable local workflow</td>
-                      <td>now</td>
+                      <td>Codex スキル</td>
+                      <td>再利用できるローカル workflow</td>
+                      <td>現在</td>
                     </tr>
                     <tr>
-                      <td>Adapters</td>
-                      <td>configured connectors</td>
-                      <td>tiered</td>
+                      <td>アダプター</td>
+                      <td>設定済み connector</td>
+                      <td>階層別</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-          <p class="note"><span class="dot green"></span>Current entry <span class="dot amber"></span>Needs verification <span class="dot blue"></span>Planned adapter</p>
+          <p class="note"><span class="dot green"></span>現在の入口 <span class="dot amber"></span>検証が必要 <span class="dot blue"></span>計画中のアダプター</p>
         </article>
 
-        <aside class="right-rail" aria-label="Get started">
-          <h2 class="rail-heading">Get started</h2>
+        <aside class="right-rail" aria-label="始める">
+          <h2 class="rail-heading">始める</h2>
           <article class="rail-item">
             <span class="rail-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M5 7l5 5l-5 5"/><path d="M13 17l6 0"/></svg>
             </span>
             <div>
-              <h3>Prompt entry</h3>
-              <p>Copy the prompt and start a session in your preferred AI assistant. Stateboard will structure the context as you work.</p>
-              <a class="rail-link" href="#quickstart">Copy prompt →</a>
+              <h3>プロンプト入口</h3>
+              <p>プロンプトをコピーして、普段使う AI assistant でセッションを開始します。Stateboard が文脈をプロジェクト状態として整理します。</p>
+              <a class="rail-link" href="#quickstart">プロンプトをコピー →</a>
             </div>
           </article>
           <article id="install-skill" class="rail-item">
@@ -1163,9 +1161,9 @@
               <svg viewBox="0 0 24 24"><path d="M4 7h4v-4h8v4h4v6h-4v8h-8v-8h-4z"/></svg>
             </span>
             <div>
-              <h3>Codex skill</h3>
-              <p>Install the local workflow for repeated intake, safer writes, and a short report after each run.</p>
-              <a class="rail-link" href="https://github.com/KongZhen/stateboard/tree/main/skills/stateboard-codex">Install skill →</a>
+              <h3>Codex スキル</h3>
+              <p>ローカル workflow をインストールして、繰り返し intake、安全な書き込み、短い実行レポートを使えます。</p>
+              <a class="rail-link" href="https://github.com/KongZhen/stateboard/tree/main/skills/stateboard-codex">スキルをインストール →</a>
             </div>
           </article>
           <article class="rail-item">
@@ -1174,8 +1172,8 @@
             </span>
             <div>
               <h3>Markdown fallback</h3>
-              <p>No connector needed. Stateboard works with plain Markdown in your repo or thread.</p>
-              <a class="rail-link" href="testing.md">See format →</a>
+              <p>connector は不要です。Stateboard はリポジトリや現在のスレッドに Markdown を出力できます。</p>
+              <a class="rail-link" href="testing.md">形式を見る →</a>
             </div>
           </article>
           <article class="rail-item">
@@ -1183,9 +1181,9 @@
               <svg viewBox="0 0 24 24"><path d="M7 7h10v10h-10z"/><path d="M4 10h3"/><path d="M17 10h3"/><path d="M10 4v3"/><path d="M10 17v3"/><path d="M14 4v3"/><path d="M14 17v3"/></svg>
             </span>
             <div>
-              <h3>Planned adapters</h3>
-              <p>Adapters come in levels. See the integration tiers below for what to expect.</p>
-              <a class="rail-link" href="#tiers">View tiers ↓</a>
+              <h3>計画中のアダプターs</h3>
+              <p>アダプターは段階的に進みます。下の連携階層で、現時点で期待できることを確認できます。</p>
+              <a class="rail-link" href="#tiers">階層を見る ↓</a>
             </div>
           </article>
         </aside>
@@ -1194,145 +1192,143 @@
       <section id="workflow" class="brief-grid" aria-label="Stateboard workflow">
         <article class="brief-card">
           <span class="num">01</span>
-          <h2>Not a todo assistant</h2>
+          <h2>TODO assistant ではない</h2>
           <p>
-            Stateboard is not a todo list or task manager. It is a reflection of your work context, summarized into what
-            happened, why it matters, and what is next.
+            Stateboard は TODO リストやタスク管理ツールではありません。作業コンテキストを、何が起きたか、なぜ重要か、次に何をするかへ要約する状態レイヤーです。
           </p>
           <ul>
-            <li>Captures decisions, outputs, links, and learnings.</li>
-            <li>Surfaces the right next actions.</li>
-            <li>Keeps history visible and searchable.</li>
+            <li>意思決定、出力、リンク、学びを保持します。</li>
+            <li>本当に必要な次のアクションを浮かび上がらせます。</li>
+            <li>履歴を見える、検索できる状態に保ちます。</li>
           </ul>
         </article>
 
         <article class="brief-card">
           <span class="num">02</span>
-          <h2>Evidence workflow</h2>
+          <h2>証拠ワークフロー</h2>
           <p>
-            Evidence is the foundation. Every update should be backed by a note, log, output, or link you can open.
+            証拠が土台です。すべての更新は、開ける note、log、output、link に裏づけられるべきです。
           </p>
           <ul>
-            <li>Capture context as you go.</li>
-            <li>Link artifacts in the repo.</li>
-            <li>Review at the sync boundary.</li>
+            <li>作業しながらコンテキストを捕捉します。</li>
+            <li>artifact をリポジトリへリンクします。</li>
+            <li>同期境界で見直します。</li>
           </ul>
         </article>
 
         <article class="brief-card">
           <span class="num">03</span>
-          <h2>Quickstart</h2>
-          <p>Get a board in your repo or thread without installing a service first.</p>
+          <h2>クイックスタート</h2>
+          <p>サービスをインストールしなくても、リポジトリやスレッドでボードを作れます。</p>
           <ol>
-            <li>Copy the prompt.</li>
-            <li>Run it in your AI assistant.</li>
-            <li>Commit the generated board or sync to a confirmed destination.</li>
+            <li>プロンプトをコピーします。</li>
+            <li>AI assistant で実行します。</li>
+            <li>生成された board を保存するか、確認済みの宛先へ同期します。</li>
           </ol>
         </article>
 
         <article class="brief-card">
           <span class="num">04</span>
-          <h2>Integration tiers</h2>
+          <h2>連携階層</h2>
           <p>
-            Integrations are described by depth and reliability instead of vague platform breadth.
+            連携は幅ではなく、深さと信頼性で説明します。
           </p>
           <ul>
-            <li>Current: prompt and Codex skill.</li>
-            <li>Configured: real connectors when available.</li>
-            <li>Fallback: Markdown or export rows.</li>
+            <li>現在: プロンプトと Codex スキル。</li>
+            <li>設定済み: 実 connector があるときだけ書き込み。</li>
+            <li>Fallback: Markdown または export rows。</li>
           </ul>
         </article>
       </section>
 
-      <section id="quickstart" class="quickstart" aria-label="Quickstart prompt">
+      <section id="quickstart" class="quickstart" aria-label="クイックスタート prompt">
         <div class="section-strip">
-          <span>Quickstart: copy the prompt</span>
-          <span>One prompt. Any assistant.</span>
+          <span>クイックスタート: プロンプトをコピー</span>
+          <span>ひとつのプロンプト。どの assistant でも。</span>
         </div>
         <div class="code-panel">
           <div class="code-head">
             <span>prompts/stateboard-sync-prompt.md</span>
             <span>copy-ready</span>
           </div>
-          <pre><code>Please organize the following projects or conversation context into a project-status board, then sync it to the destination I specify.
+          <pre><code>以下のプロジェクトまたは会話コンテキストをプロジェクト状態ボードに整理し、指定した宛先へ同期してください。
 
-What I want to organize:
-[For example: the last 60 days of Codex / ChatGPT / Claude / DeepSeek / WorkBuddy conversations that I can provide or you can read; the current project; a project folder; my existing todos; several pasted project chats]
+整理したい内容:
+[例: 提供できる、または読める Codex / ChatGPT / Claude / DeepSeek / WorkBuddy の直近 60 日分の会話、現在のプロジェクト、プロジェクトフォルダ、既存の TODO、貼り付けた複数のプロジェクト会話]
 
-Sync to:
-[For example: Dida/TickTick, Notion, Google Calendar, Feishu/Lark, DingTalk, WeCom, or Markdown only]
+同期先:
+[例: Dida/TickTick、Notion、Google Calendar、Feishu/Lark、DingTalk、WeCom、Markdown のみ]
 
-Target location:
-[For example: the "Project Control" list in Dida/TickTick; a Notion page/database; "create a new list called XXX"; if Markdown only, write "reply directly here"]
+対象場所:
+[例: Dida/TickTick の「Project Control」リスト、Notion のページ/データベース、新しい XXX リスト、Markdown のみなら「このスレッドに返信」]
 
-Automatic refresh:
-[Not needed / daily HH:MM / weekly weekday HH:MM. If there is no clear time, write "not needed"]
+自動更新:
+[不要 / 毎日 HH:MM / 毎週 曜日 HH:MM。明確な時刻がない場合は「不要」と書く]
 
-Rules:
-- Only use content you can read, search, or that I have provided.
-- Judge project state from evidence first. Do not split chat history directly into many tasks.
-- By default, create or update only one project-status task per real project.
-- Search for existing tasks before writing. If the same project already exists, update it.
-- If automatic refresh lacks frequency and exact time, ask first. Do not assume any default time.
-- Do not write tokens, webhook secrets, license keys, private credentials, or private destination identifiers.
-- When done, tell me what was created, updated, verified, and what still needs confirmation.</code></pre>
+ルール:
+- 読める、検索できる、または私が提供した内容だけを使う。
+- まず証拠からプロジェクト状態を判断する。チャット履歴をそのまま大量のタスクに分割しない。
+- 既定では、実プロジェクトごとに 1 つのプロジェクト状態タスクだけを作成または更新する。
+- 書き込み前に既存タスクを検索する。同じプロジェクトがあれば更新する。
+- 自動更新に頻度と正確な時刻がない場合は、先に確認する。既定時刻を仮定しない。
+- token、webhook secret、license key、private credential、private destination identifier を書き込まない。
+- 完了後、作成、更新、検証、まだ確認が必要なことを報告する。</code></pre>
         </div>
       </section>
 
-      <section id="tiers" class="tiers" aria-label="Integration tiers">
+      <section id="tiers" class="tiers" aria-label="連携階層">
         <div class="tier-layout">
           <div class="tier-note">
-            <p class="kicker">Integration tiers</p>
-            <h2>Depth over breadth.</h2>
+            <p class="kicker">連携階層</p>
+            <h2>広さより深さ。</h2>
             <p>
-              Stateboard never says “supports everything” without a support tier. Todo sync, calendar sync, notification
-              delivery, and Markdown fallback are different promises.
+              Stateboard は support tier なしに「すべてをサポート」とは言いません。タスク同期、カレンダー同期、通知配信、Markdown fallback は別の約束です。
             </p>
             <ul>
-              <li>Current entry points are prompt and Codex skill.</li>
-              <li>Real writes require connector discovery and verification.</li>
-              <li>Automation waits for a confirmed frequency and exact time.</li>
+              <li>現在の入口はプロンプトと Codex スキルです。</li>
+              <li>実書き込みには connector discovery と検証が必要です。</li>
+              <li>自動化は頻度と正確な時刻が確認されるまで待ちます。</li>
             </ul>
           </div>
           <div class="tier-table-wrap">
             <table class="tier-table">
               <thead>
                 <tr>
-                  <th>Tier</th>
-                  <th>Focus</th>
-                  <th>Examples</th>
-                  <th>Capability</th>
-                  <th>Availability</th>
+                  <th>階層</th>
+                  <th>焦点</th>
+                  <th>例</th>
+                  <th>能力</th>
+                  <th>可用性</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Current</td>
-                  <td><span class="dot green"></span>Local-first</td>
-                  <td>Prompt, Codex skill, Markdown</td>
-                  <td>Create a project board and run report from readable context.</td>
+                  <td>現在</td>
+                  <td><span class="dot green"></span>ローカル優先</td>
+                  <td>プロンプト, Codex スキル, Markdown</td>
+                  <td>読めるコンテキストからプロジェクトボードと実行レポートを作成。</td>
                   <td>Now</td>
                 </tr>
                 <tr>
-                  <td>Tier 1</td>
-                  <td><span class="dot green"></span>Direct connector</td>
-                  <td>Dida/TickTick, Notion, Calendar when configured</td>
-                  <td>Write, search, update, and verify inside the current runtime.</td>
-                  <td>Runtime-dependent</td>
+                  <td>階層 1</td>
+                  <td><span class="dot green"></span>直接 connector</td>
+                  <td>設定済み Dida/TickTick、Notion、Calendar</td>
+                  <td>現在の runtime 内で書き込み、検索、更新、検証。</td>
+                  <td>Runtime 依存</td>
                 </tr>
                 <tr>
-                  <td>Tier 2</td>
-                  <td><span class="dot blue"></span>Official API path</td>
-                  <td>Feishu/Lark, DingTalk, custom MCP</td>
-                  <td>Requires app setup, permissions, tokens, and ID mapping.</td>
-                  <td>Planned</td>
+                  <td>階層 2</td>
+                  <td><span class="dot blue"></span>公式 API パス</td>
+                  <td>Feishu/Lark、DingTalk、custom MCP</td>
+                  <td>アプリ設定、権限、token、ID mapping が必要。</td>
+                  <td>計画中</td>
                 </tr>
                 <tr>
-                  <td>Tier 3/4</td>
-                  <td><span class="dot amber"></span>Notification or export</td>
-                  <td>WeCom digest, CSV-like rows, copy/import</td>
-                  <td>Useful for delivery or fallback, not a full task database.</td>
-                  <td>Bounded</td>
+                  <td>階層 3/4</td>
+                  <td><span class="dot amber"></span>通知または export</td>
+                  <td>WeCom digest、CSV-like rows、copy/import</td>
+                  <td>用途ful for delivery or fallback, not a full task database.</td>
+                  <td>境界あり</td>
                 </tr>
               </tbody>
             </table>
@@ -1345,10 +1341,10 @@ Rules:
       <div class="edition footer-row">
         <span>© Stateboard · MIT Licensed · Built for evidence-based AI project state sync.</span>
         <span class="footer-links">
-          <a href="product-definition.md">Docs</a>
-          <a href="integration-matrix.md">Integration matrix</a>
-          <a href="testing.md">Testing</a>
-          <a href="roadmap.md">Roadmap</a>
+          <a href="product-definition.md">ドキュメント</a>
+          <a href="integration-マトリクス.md">Integration マトリクス</a>
+          <a href="testing.md">テスト</a>
+          <a href="roadmap.md">ロードマップ</a>
           <a href="https://github.com/KongZhen/stateboard">GitHub</a>
         </span>
       </div>

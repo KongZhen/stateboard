@@ -17,14 +17,15 @@
 - 使用报纸密度：强规则线、窄 gutter、清楚分栏、紧凑摘要和表格。
 - 产品承诺必须有边界。所有集成声明都要说明层级或运行环境依赖。
 - 页面保持静态：不引入外部字体、框架、分析脚本、JavaScript 或远程图片依赖。
+- 语言切换必须是独立控件组。不要把 `EN / 中文 / 日本語 / 한국어 / ES` 混到文档、路线图或 GitHub 链接里。
 
 ## Tokens
 
 ### 字体
 
 - Masthead：`Georgia`, `"Times New Roman"`, `Times`, `ui-serif`, `serif`。
-- 中文正文衬线：加入 `"Songti SC"`, `"STSong"`, `"Noto Serif CJK SC"`。
-- UI sans：system sans，并加入 `PingFang SC` / `Microsoft YaHei`。
+- 多语言衬线 fallback：加入 `"Songti SC"`, `"STSong"`, `"Noto Serif CJK SC"`, `"Hiragino Mincho ProN"`, `"Yu Mincho"`, `"Nanum Myeongjo"`。
+- UI sans：system sans，并加入 `PingFang SC`, `Microsoft YaHei`, `Hiragino Sans`, `Yu Gothic`, `Apple SD Gothic Neo`。
 - 等宽：`ui-monospace`, `SFMono-Regular`, `Menlo`, `Consolas`, `"Liberation Mono"`, `monospace`。
 - Masthead 尺寸：
   - desktop: `168px`
@@ -57,6 +58,10 @@
   - 超大居中 masthead
   - 三个 action 的操作栏
   - sticky section nav
+- Topline 分组：
+  - 左侧：edition state
+  - 中间：短 publication line
+  - 右侧：utility links 和独立 language switcher
 - 头版网格：
   - 左侧 lead story
   - 中间状态板预览
@@ -70,10 +75,22 @@
 
 ## 组件
 
+### Language Switcher
+
+- 语言切换位于 `.language-switcher`，与 `.utility-links` 之间用细竖线分隔。
+- 当前公开语言页：
+  - English: `index.html`
+  - 简体中文: `index.zh.html`
+  - 日本語: `index.ja.html`
+  - 한국어: `index.ko.html`
+  - Español: `index.es.html`
+- 当前语言使用 `aria-current="page"`。
+- 每个语言页都要包含五种语言和 `x-default` 的 `hreflang` alternate。
+
 ### Action Rail
 
 - 始终展示 `复制 prompt`、`查看 GitHub`、`安装 skill`。
-- 使用 code-native SVG icon。
+- 使用 Tabler Icons 视觉模型的 code-native SVG：24x24 viewBox、无填充、`stroke: currentColor`、`stroke-width: 2`、圆形端点和转角。
 - 链接黑色、居中，并用竖线分隔。
 - 移动端堆叠成三行。
 
@@ -106,6 +123,9 @@
 
 - 验证 `390px`、`768px` 和 `1440px`。
 - Masthead 必须可读，不能撞边。
+- Masthead 副标题使用更宽的 balanced text measure，避免中文、日文、韩文和西班牙语被拆成单字或单词孤行。
+- 中文、日文、韩文短 UI 标题使用 `word-break: keep-all`、`line-break: strict` 和 `text-wrap: balance`；masthead 副标题和长 story headline 必须保留 CJK 自然换行，避免窄屏裁切。
+- 西班牙语正文使用 `hyphens: auto` 处理较长单词。
 - 小屏 section nav 可横向滚动。
 - 表格和 prompt block 可以在自身容器内横向滚动。
 - 普通正文必须自然换行，不能溢出。
@@ -117,9 +137,13 @@
 - 源文件：
   - `docs/index.html`
   - `docs/index.zh.html`
+  - `docs/index.ja.html`
+  - `docs/index.ko.html`
+  - `docs/index.es.html`
   - `docs/page-design-system.md`
   - `docs/page-design-system.zh.md`
 - 英文页是 canonical；中文页镜像结构和行为。
+- 日文、韩文、西班牙语页面镜像同一版式，但必须保留各自语言的阅读节奏，不能盲目继承英文换行行为。
 - HTML/CSS 保持单文件自包含。
 - 如果视觉 token 或组件规则变化，必须同步更新本文档和英文版。
 
@@ -127,8 +151,11 @@
 
 - Masthead 和 ruled navigation 有编辑化报纸感。
 - 首屏包括三个 action link 和产品状态板预览。
+- 语言切换与文档 / 路线图 / GitHub 在视觉上分组明确。
 - 页面避免 generic SaaS card、渐变、blob 和过度圆角 UI。
+- 图标共享同一套 24px / 2px stroke 视觉系统。
 - 状态板预览明确表达证据、优先级、下一步和同步边界。
 - 集成声明保持分层和有边界。
 - 代码块和表格不会导致整页横向溢出。
+- 中文、日文、韩文、西班牙语页面的 hero / subhead 不出现明显单字或单词孤行。
 - `git diff --check` 通过。
