@@ -2,6 +2,14 @@
 
 [中文](README.zh.md)
 
+[GitHub Page](https://kongzhen.github.io/stateboard/) ·
+[中文](https://kongzhen.github.io/stateboard/index.zh.html) ·
+[日本語](https://kongzhen.github.io/stateboard/index.ja.html) ·
+[한국어](https://kongzhen.github.io/stateboard/index.ko.html) ·
+[Español](https://kongzhen.github.io/stateboard/index.es.html)
+
+![Stateboard GitHub Page first screen](docs/assets/stateboard-github-page-en.png)
+
 Turn AI work context into a living project board.
 
 Stateboard turns scattered work context from AI conversations, project files, project notes, todos, and verification results into a maintained project-status board. It can then sync that board into the todo, calendar, documentation, or collaboration tools people already use.

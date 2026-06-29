@@ -2,6 +2,14 @@
 
 [English](README.md)
 
+[GitHub Page](https://kongzhen.github.io/stateboard/) ·
+[中文](https://kongzhen.github.io/stateboard/index.zh.html) ·
+[日本語](https://kongzhen.github.io/stateboard/index.ja.html) ·
+[한국어](https://kongzhen.github.io/stateboard/index.ko.html) ·
+[Español](https://kongzhen.github.io/stateboard/index.es.html)
+
+![Stateboard GitHub Page 首屏截图](docs/assets/stateboard-github-page-zh.png)
+
 把 AI 工作上下文变成持续更新的项目状态板。
 
 Stateboard 把分散在 AI 对话、项目文件、项目说明、待办和验证结果里的工作上下文，整理成持续更新的项目状态板，并同步到用户已经使用的待办、日程或团队协作工具。
