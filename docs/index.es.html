@@ -219,6 +219,7 @@
         position: sticky;
         top: 0;
         z-index: 20;
+        border-top: 1px solid var(--line);
         background: rgba(247, 245, 238, 0.96);
         backdrop-filter: blur(10px);
       }
@@ -632,6 +633,7 @@
 
       .code-head {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         gap: 18px;
         padding: 10px 14px;
@@ -639,6 +641,32 @@
         color: #e8efe9;
         font-family: var(--sans);
         font-size: 12px;
+      }
+
+      .copy-button {
+        display: inline-flex;
+        min-height: 32px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        border: 1px solid rgba(255, 255, 255, 0.36);
+        border-radius: 0;
+        background: transparent;
+        color: #f3f6f1;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+      }
+
+      .copy-button:hover,
+      .copy-button:focus-visible {
+        border-color: #f3f6f1;
+        outline: 0;
+      }
+
+      .copy-button[data-copied="true"] {
+        color: #bbd8c2;
+        border-color: rgba(187, 216, 194, 0.72);
       }
 
       pre {
@@ -1303,31 +1331,34 @@
         </div>
         <div class="code-panel">
           <div class="code-head">
-            <span>prompts/stateboard-sync-prompt.md</span>
-            <span>copy-ready</span>
+            <span>prompts/stateboard-sync-prompt.es.md</span>
+            <button class="copy-button" type="button" data-copy-target="#quickstart code" data-copied-label="Copiado" data-fail-label="Error al copiar">Botón copiar</button>
           </div>
-          <pre><code>Organiza los siguientes proyectos o contexto de conversación en un tablero de estado de proyectos y sincronízalo con el destino que especifique.
+          <pre><code>Organiza los siguientes proyectos o contexto de conversación en un tablero de estado de proyecto y sincronízalo con el destino que indique.
 
-Qué quiero organizar:
-[Por ejemplo: conversaciones de los últimos 60 días de Codex / ChatGPT / Claude / DeepSeek / WorkBuddy que pueda proporcionar o que puedas leer; el proyecto actual; una carpeta de proyecto; mis tareas existentes; varias conversaciones pegadas]
+Contenido que quiero organizar:
+[Por ejemplo: conversaciones de los últimos 60 días de Codex / ChatGPT / Claude / DeepSeek / WorkBuddy que pueda aportar o que puedas leer; el proyecto actual; una carpeta de proyecto; mis tareas existentes; varios chats de proyecto pegados]
 
 Sincronizar con:
 [Por ejemplo: Dida/TickTick, Notion, Google Calendar, Feishu/Lark, DingTalk, WeCom o solo Markdown]
 
 Ubicación de destino:
-[Por ejemplo: la lista “Project Control” en Dida/TickTick; una página/base de datos de Notion; “crear una lista nueva llamada XXX”; si es solo Markdown, escribe “responde aquí”]
+[Por ejemplo: la lista "Project Control" en Dida/TickTick; una página/base de datos de Notion; "crea una lista nueva llamada XXX"; si solo es Markdown, escribe "responde directamente aquí"]
 
 Actualización automática:
-[No hace falta / diario HH:MM / semanal día HH:MM. Si no hay una hora clara, escribe “no hace falta”]
+[No necesaria / diaria HH:MM / semanal día HH:MM. Si no hay una hora clara, escribe "no necesaria"]
 
 Reglas:
-- Usa solo contenido que puedas leer, buscar o que yo haya proporcionado.
-- Juzga el estado del proyecto desde evidencia primero. No conviertas el historial de chat en muchas tareas.
-- Por defecto, crea o actualiza solo una tarea de estado por proyecto real.
-- Busca tareas existentes antes de escribir. Si el mismo proyecto ya existe, actualízalo.
-- Si la actualización automática no tiene frecuencia y hora exacta, pregunta primero. No asumas una hora predeterminada.
-- No escribas tokens, secretos de webhook, license keys, credenciales privadas ni identificadores privados de destino.
-- Al terminar, dime qué se creó, qué se actualizó, qué se verificó y qué necesita confirmación.</code></pre>
+- Usa solo contenido que puedas leer, buscar o que yo haya proporcionado. Si faltan conversaciones o materiales del proyecto, dime qué falta.
+- Juzga primero el estado del proyecto a partir de evidencia. No conviertas directamente el historial de chat en muchas tareas.
+- Por defecto, crea o actualiza solo una tarea de estado por proyecto real. Incluye progreso actual, riesgos/bloqueos, próximos pasos y evidencia.
+- Mantén solo 3-5 próximos pasos realmente útiles por tarea.
+- Busca tareas existentes antes de escribir. Si ya existe una tarea de estado del mismo proyecto, actualízala en vez de crear un duplicado.
+- Si el entorno actual no puede escribir en la herramienta de destino, genera una versión Markdown lista para copiar y explica el bloqueo.
+- Si pido actualización automática pero no doy frecuencia y hora exacta, pregunta primero. No asumas una hora por defecto. Si el entorno actual no puede crear la automatización, da instrucciones listas para copiar en lugar de afirmar que ya fue creada.
+- No escribas tokens, webhook secrets, license keys, credenciales privadas ni identificadores privados del sistema de destino.
+- Responde y escribe el contenido de destino en el idioma de mi solicitud, salvo que pida explícitamente salida bilingüe.
+- Al terminar, dime qué se creó, qué se actualizó, cómo se verificó y qué sigue necesitando mi confirmación.</code></pre>
         </div>
       </section>
 
@@ -1404,5 +1435,52 @@ Reglas:
         </span>
       </div>
     </footer>
+    <script>
+      (() => {
+        const copyText = async (text) => {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.top = "-1000px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        };
+
+        document.querySelectorAll("[data-copy-target]").forEach((button) => {
+          const label = button.textContent;
+          const copiedLabel = button.dataset.copiedLabel || label;
+          const failLabel = button.dataset.failLabel || label;
+
+          button.addEventListener("click", async () => {
+            const target = document.querySelector(button.dataset.copyTarget);
+            if (!target) return;
+
+            try {
+              await copyText(target.textContent.trim());
+              button.textContent = copiedLabel;
+              button.dataset.copied = "true";
+              window.setTimeout(() => {
+                button.textContent = label;
+                button.dataset.copied = "false";
+              }, 1800);
+            } catch (error) {
+              button.textContent = failLabel;
+              button.dataset.copied = "false";
+              window.setTimeout(() => {
+                button.textContent = label;
+              }, 1800);
+            }
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

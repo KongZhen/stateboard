@@ -219,6 +219,7 @@
         position: sticky;
         top: 0;
         z-index: 20;
+        border-top: 1px solid var(--line);
         background: rgba(247, 245, 238, 0.96);
         backdrop-filter: blur(10px);
       }
@@ -632,6 +633,7 @@
 
       .code-head {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         gap: 18px;
         padding: 10px 14px;
@@ -639,6 +641,32 @@
         color: #e8efe9;
         font-family: var(--sans);
         font-size: 12px;
+      }
+
+      .copy-button {
+        display: inline-flex;
+        min-height: 32px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        border: 1px solid rgba(255, 255, 255, 0.36);
+        border-radius: 0;
+        background: transparent;
+        color: #f3f6f1;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+      }
+
+      .copy-button:hover,
+      .copy-button:focus-visible {
+        border-color: #f3f6f1;
+        outline: 0;
+      }
+
+      .copy-button[data-copied="true"] {
+        color: #bbd8c2;
+        border-color: rgba(187, 216, 194, 0.72);
       }
 
       pre {
@@ -1307,7 +1335,7 @@
         <div class="code-panel">
           <div class="code-head">
             <span>prompts/stateboard-sync-prompt.md</span>
-            <span>copy-ready</span>
+            <button class="copy-button" type="button" data-copy-target="#quickstart code" data-copied-label="Copied" data-fail-label="Copy failed">Copy button</button>
           </div>
           <pre><code>Please organize the following projects or conversation context into a project-status board, then sync it to the destination I specify.
 
@@ -1324,13 +1352,16 @@ Automatic refresh:
 [Not needed / daily HH:MM / weekly weekday HH:MM. If there is no clear time, write "not needed"]
 
 Rules:
-- Only use content you can read, search, or that I have provided.
+- Only use content you can read, search, or that I have provided. If some conversations or project materials are unavailable, tell me what is missing.
 - Judge project state from evidence first. Do not split chat history directly into many tasks.
-- By default, create or update only one project-status task per real project.
-- Search for existing tasks before writing. If the same project already exists, update it.
-- If automatic refresh lacks frequency and exact time, ask first. Do not assume any default time.
+- By default, create or update only one project-status task per real project. Include current progress, risks/blockers, next steps, and evidence.
+- Keep only 3-5 useful next steps per task.
+- Search for existing tasks before writing. If a status task for the same project already exists, update it instead of creating a duplicate.
+- If the target tool cannot be written to from the current environment, output a copy-ready Markdown version and explain the blocker.
+- If I ask for automatic refresh but did not provide both frequency and exact time, ask me first. Do not assume any default time. If the current environment cannot create automation, give me copy-ready setup instructions instead of claiming it was created.
 - Do not write tokens, webhook secrets, license keys, private credentials, or private destination identifiers.
-- When done, tell me what was created, updated, verified, and what still needs confirmation.</code></pre>
+- Respond and write destination content in the language of my request unless I explicitly ask for bilingual output.
+- When done, tell me what was created, what was updated, how it was verified, and what still needs my confirmation.</code></pre>
         </div>
       </section>
 
@@ -1408,5 +1439,52 @@ Rules:
         </span>
       </div>
     </footer>
+    <script>
+      (() => {
+        const copyText = async (text) => {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.top = "-1000px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        };
+
+        document.querySelectorAll("[data-copy-target]").forEach((button) => {
+          const label = button.textContent;
+          const copiedLabel = button.dataset.copiedLabel || label;
+          const failLabel = button.dataset.failLabel || label;
+
+          button.addEventListener("click", async () => {
+            const target = document.querySelector(button.dataset.copyTarget);
+            if (!target) return;
+
+            try {
+              await copyText(target.textContent.trim());
+              button.textContent = copiedLabel;
+              button.dataset.copied = "true";
+              window.setTimeout(() => {
+                button.textContent = label;
+                button.dataset.copied = "false";
+              }, 1800);
+            } catch (error) {
+              button.textContent = failLabel;
+              button.dataset.copied = "false";
+              window.setTimeout(() => {
+                button.textContent = label;
+              }, 1800);
+            }
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

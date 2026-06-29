@@ -219,6 +219,7 @@
         position: sticky;
         top: 0;
         z-index: 20;
+        border-top: 1px solid var(--line);
         background: rgba(247, 245, 238, 0.96);
         backdrop-filter: blur(10px);
       }
@@ -632,6 +633,7 @@
 
       .code-head {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         gap: 18px;
         padding: 10px 14px;
@@ -639,6 +641,32 @@
         color: #e8efe9;
         font-family: var(--sans);
         font-size: 12px;
+      }
+
+      .copy-button {
+        display: inline-flex;
+        min-height: 32px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        border: 1px solid rgba(255, 255, 255, 0.36);
+        border-radius: 0;
+        background: transparent;
+        color: #f3f6f1;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+      }
+
+      .copy-button:hover,
+      .copy-button:focus-visible {
+        border-color: #f3f6f1;
+        outline: 0;
+      }
+
+      .copy-button[data-copied="true"] {
+        color: #bbd8c2;
+        border-color: rgba(187, 216, 194, 0.72);
       }
 
       pre {
@@ -1303,8 +1331,8 @@
         </div>
         <div class="code-panel">
           <div class="code-head">
-            <span>prompts/stateboard-sync-prompt.md</span>
-            <span>copy-ready</span>
+            <span>prompts/stateboard-sync-prompt.ja.md</span>
+            <button class="copy-button" type="button" data-copy-target="#quickstart code" data-copied-label="コピー済み" data-fail-label="コピー失敗">コピーボタン</button>
           </div>
           <pre><code>以下のプロジェクトまたは会話コンテキストをプロジェクト状態ボードに整理し、指定した宛先へ同期してください。
 
@@ -1321,13 +1349,16 @@
 [不要 / 毎日 HH:MM / 毎週 曜日 HH:MM。明確な時刻がない場合は「不要」と書く]
 
 ルール:
-- 読める、検索できる、または私が提供した内容だけを使う。
+- 読める、検索できる、または私が提供した内容だけを使う。見えない会話やプロジェクト資料がある場合は、何が不足しているかを伝える。
 - まず証拠からプロジェクト状態を判断する。チャット履歴をそのまま大量のタスクに分割しない。
-- 既定では、実プロジェクトごとに 1 つのプロジェクト状態タスクだけを作成または更新する。
-- 書き込み前に既存タスクを検索する。同じプロジェクトがあれば更新する。
-- 自動更新に頻度と正確な時刻がない場合は、先に確認する。既定時刻を仮定しない。
+- 既定では、実プロジェクトごとに 1 つのプロジェクト状態タスクだけを作成または更新する。現在の進捗、リスク/ブロッカー、次のステップ、証拠を含める。
+- 各タスクの次のステップは、本当に有用な 3-5 個だけに絞る。
+- 書き込み前に既存タスクを検索する。同じプロジェクトの状態タスクがあれば、重複作成せず更新する。
+- 現在の環境から対象ツールへ書き込めない場合は、コピーしやすい Markdown 版を出力し、ブロッカーを説明する。
+- 自動更新を希望していても、頻度と正確な時刻が両方ない場合は先に確認する。既定時刻を仮定しない。現在の環境で自動化を作成できない場合は、作成済みと主張せず、コピーできる設定手順を出す。
 - token、webhook secret、license key、private credential、private destination identifier を書き込まない。
-- 完了後、作成、更新、検証、まだ確認が必要なことを報告する。</code></pre>
+- 明示的にバイリンガル出力を依頼しない限り、私の依頼の言語で返答し、同じ言語で宛先内容を書く。
+- 完了後、作成したもの、更新したもの、検証方法、まだ確認が必要なことを報告する。</code></pre>
         </div>
       </section>
 
@@ -1404,5 +1435,52 @@
         </span>
       </div>
     </footer>
+    <script>
+      (() => {
+        const copyText = async (text) => {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.top = "-1000px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        };
+
+        document.querySelectorAll("[data-copy-target]").forEach((button) => {
+          const label = button.textContent;
+          const copiedLabel = button.dataset.copiedLabel || label;
+          const failLabel = button.dataset.failLabel || label;
+
+          button.addEventListener("click", async () => {
+            const target = document.querySelector(button.dataset.copyTarget);
+            if (!target) return;
+
+            try {
+              await copyText(target.textContent.trim());
+              button.textContent = copiedLabel;
+              button.dataset.copied = "true";
+              window.setTimeout(() => {
+                button.textContent = label;
+                button.dataset.copied = "false";
+              }, 1800);
+            } catch (error) {
+              button.textContent = failLabel;
+              button.dataset.copied = "false";
+              window.setTimeout(() => {
+                button.textContent = label;
+              }, 1800);
+            }
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

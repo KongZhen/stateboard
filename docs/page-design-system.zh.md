@@ -16,7 +16,7 @@
 - 首屏必须出现 masthead、一句话价值主张、`复制 prompt`、`查看 GitHub`、`安装 skill`、产品状态板预览和开始使用栏。
 - 使用报纸密度：强规则线、窄 gutter、清楚分栏、紧凑摘要和表格。
 - 产品承诺必须有边界。所有集成声明都要说明层级或运行环境依赖。
-- 页面保持静态：不引入外部字体、框架、分析脚本、JavaScript 或远程图片依赖。
+- 页面保持静态：不引入外部字体、框架、分析脚本或远程图片依赖。唯一允许的 JavaScript 是 quickstart prompt 的小型内联复制处理器。
 - 语言切换必须是独立控件组。不要把 `EN / 中文 / 日本語 / 한국어 / ES` 混到文档、路线图或 GitHub 链接里。
 
 ## Tokens
@@ -111,6 +111,7 @@
 ### Quickstart Prompt
 
 - 保持真实 prompt 可见、可复制。
+- Prompt 头部必须使用真正的 `<button>`，一键复制当前可见 prompt 文本；不要使用被动的 `copy-ready` 标签。
 - 使用深色等宽代码面板。
 - 用 `white-space: pre` 保留格式，并允许横向滚动。
 - 未确认频率和具体时间时，不要声称会创建自动化。
@@ -144,6 +145,11 @@
   - `docs/index.es.html`
   - `docs/page-design-system.md`
   - `docs/page-design-system.zh.md`
+  - `prompts/stateboard-sync-prompt.md`
+  - `prompts/stateboard-sync-prompt.zh.md`
+  - `prompts/stateboard-sync-prompt.ja.md`
+  - `prompts/stateboard-sync-prompt.ko.md`
+  - `prompts/stateboard-sync-prompt.es.md`
 - 英文页是 canonical；中文页镜像结构和行为。
 - 日文、韩文、西班牙语页面镜像同一版式，但必须保留各自语言的阅读节奏，不能盲目继承英文换行行为。
 - HTML/CSS 保持单文件自包含。
@@ -160,5 +166,6 @@
 - 状态板预览明确表达证据、优先级、下一步和同步边界。
 - 集成声明保持分层和有边界。
 - 代码块和表格不会导致整页横向溢出。
+- 复制按钮复制的内容必须和各语言页面中可见的 prompt 文本一致。
 - 中文、日文、韩文、西班牙语页面的 hero / subhead 不出现明显单字或单词孤行，并且 story、rail、table 文本都不能跨出自己的分栏边界。
 - `git diff --check` 通过。

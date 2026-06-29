@@ -16,7 +16,7 @@ This is an original Stateboard page. Do not copy external logos, masthead letter
 - The first viewport must show the masthead, one-line value proposition, `Copy prompt`, `View GitHub`, `Install skill`, a product board preview, and a get-started rail.
 - Use newspaper density: strong rules, narrow gutters, clear columns, compact summaries, and tables.
 - Keep the product claims bounded. Every integration claim must name a tier or runtime dependency.
-- Keep the page static: no external fonts, frameworks, analytics, JavaScript, or remote image dependencies.
+- Keep the page static: no external fonts, frameworks, analytics, or remote image dependencies. The only allowed JavaScript is the small inline clipboard handler for the quickstart prompt.
 - Language switching is its own control group. Do not mix `EN / 中文 / 日本語 / 한국어 / ES` with utility links such as docs, roadmap, or GitHub.
 
 ## Tokens
@@ -112,6 +112,7 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 ### Quickstart Prompt
 
 - Keep the actual prompt copy visible and copy-ready.
+- The prompt header must use a real `<button>` that copies the visible prompt text in one click; do not use a passive `copy-ready` label.
 - Use a dark monospace code panel.
 - Preserve prompt formatting with `white-space: pre` and allow horizontal scroll.
 - Do not claim automation will be created unless frequency and exact time are confirmed.
@@ -145,6 +146,11 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
   - `docs/index.es.html`
   - `docs/page-design-system.md`
   - `docs/page-design-system.zh.md`
+  - `prompts/stateboard-sync-prompt.md`
+  - `prompts/stateboard-sync-prompt.zh.md`
+  - `prompts/stateboard-sync-prompt.ja.md`
+  - `prompts/stateboard-sync-prompt.ko.md`
+  - `prompts/stateboard-sync-prompt.es.md`
 - English page is canonical; Chinese page mirrors structure and behavior.
 - Japanese, Korean, and Spanish pages mirror the same layout and must keep localized reading rhythm rather than inheriting English line-break behavior blindly.
 - Keep HTML/CSS self-contained in each page.
@@ -161,5 +167,6 @@ Accent color is reserved for status and tier meaning only. Avoid purple, indigo 
 - The board preview communicates evidence, priority, next action, and sync boundary.
 - Integration claims stay tiered and bounded.
 - Code block and tables do not force whole-page horizontal overflow.
+- Copy buttons copy the same prompt text that is visible in each language page.
 - Chinese, Japanese, Korean, and Spanish pages do not produce awkward single-character or single-word line breaks in hero/subhead copy, and no story, rail, or table text crosses its column boundary.
 - `git diff --check` passes.
